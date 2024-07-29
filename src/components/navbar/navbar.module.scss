@@ -1,0 +1,108 @@
+.toplevel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #191C2F;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.logoImg {
+  display: flex;
+  align-items: center;
+  height: 73px;
+  width: 200px;
+  margin-right: 8px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navleft {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.navLink {
+  all: unset;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  text-wrap: nowrap;
+  gap: 8px;
+  cursor: pointer;
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.navLink.active {
+  color: #0265e7;
+  font-weight: bold;
+}
+
+.navright {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+  color: white;
+  margin-right: 2%;
+  cursor: pointer;
+}
+
+.avatarimg {
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.studentButton{
+    border: #ffffff solid 1px;
+    padding: 10px 60px;
+    border-radius: 5rem;
+    text-decoration: none;
+}
+
+.studentButton:hover{
+    background-color: #ffffff;
+    color: #191C2F;
+}
+
+@media (max-width: 768px) {
+  .toplevel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logoImg {
+    display: none;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .navleft {
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .navright {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navLink {
+    justify-content: flex-start;
+  }
+}
+
