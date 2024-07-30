@@ -49,8 +49,6 @@ export default function Navbar() {
           >
             <span>Aulas Gratuitas</span>
           </Link>
-
-
         </div>
 
         <div className={styles.navright}>
