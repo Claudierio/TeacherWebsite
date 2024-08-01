@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "./Login.module.scss";
+import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 
 const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.leftPanel}>
         <div className={styles.logo}>
-          <span>F</span>
+          <span>Melhor</span>
+          <span>Plataforma</span>
+          <span>De português</span>
         </div>
       </div>
       <div className={styles.rightPanel}>
@@ -15,10 +20,22 @@ const Login = () => {
           <div className={styles.inputGroup}>
             <label htmlFor="email">E-mail</label>
             <input type="email" id="email" placeholder="E-mail" required />
+            <AlternateEmailOutlinedIcon className={styles.icon}
+            sx={{
+              width: 18,
+              height: 18,
+            }}
+            />
           </div>
           <div className={styles.inputGroup}>
             <label htmlFor="password">Senha</label>
             <input type="password" id="password" placeholder="Senha" required />
+            <LockOutlinedIcon className={styles.icon} 
+            sx={{
+              width: 18,
+              height: 18,
+            }} 
+            />
           </div>
           <div className={styles.actionGroup}>
             <button type="submit" className={styles.loginButton}>

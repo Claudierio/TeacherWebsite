@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+AR:wght@100..400&display=swap');
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
@@ -16,14 +17,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    inset: 0px;
+    background-image: url('/background_login.png'); /* Atualize o caminho conforme necessário */
+    background-position: center center;
+    background-size: 500px;
+    opacity: 0.5;
+  }
 }
 
 .logo {
-  font-size: 64px;
-  color: #000;
-  background-color: #141416;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 35px;
+  color: #000000;
   border-radius: 12px;
   padding: 12px;
+  font-family: "Playwrite AR", cursive;
 }
 
 .rightPanel {
@@ -49,7 +64,19 @@ form {
 
 .inputGroup {
   margin-bottom: 20px;
+  position: relative;
 }
+
+.icon {
+  position: absolute;
+  left: 96%;
+  top: 70%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Para que o ícone não interfira na interação do usuário com o input */
+  width: 5px;
+  height: 5px;
+}
+
 
 label {
   display: block;
@@ -113,6 +140,7 @@ input:focus {
 .registerLink span {
   color: rgb(51, 147, 255);
 }
+
 
 @media (max-width: 768px) {
     .leftPanel {
