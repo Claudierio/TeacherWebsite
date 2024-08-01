@@ -1,8 +1,8 @@
-import React from "react";
 import styles from "./Login.module.scss";
-import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -20,21 +20,23 @@ const Login = () => {
           <div className={styles.inputGroup}>
             <label htmlFor="email">E-mail</label>
             <input type="email" id="email" placeholder="E-mail" required />
-            <AlternateEmailOutlinedIcon className={styles.icon}
-            sx={{
-              width: 18,
-              height: 18,
-            }}
+            <AlternateEmailOutlinedIcon
+              className={styles.icon}
+              sx={{
+                width: 18,
+                height: 18,
+              }}
             />
           </div>
           <div className={styles.inputGroup}>
             <label htmlFor="password">Senha</label>
             <input type="password" id="password" placeholder="Senha" required />
-            <LockOutlinedIcon className={styles.icon} 
-            sx={{
-              width: 18,
-              height: 18,
-            }} 
+            <LockOutlinedIcon
+              className={styles.icon}
+              sx={{
+                width: 18,
+                height: 18,
+              }}
             />
           </div>
           <div className={styles.actionGroup}>
@@ -46,9 +48,12 @@ const Login = () => {
             </a>
           </div>
         </form>
-        <a href="#" className={styles.registerLink}>
-          Não tem uma conta? <span>Cadastre-se</span> 
-        </a>
+        <div className={styles.registerLink}>
+          Não tem uma conta?{" "}
+          <Link to="/register" className={styles.linkToRegister}>
+            <span>Cadastre-se</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

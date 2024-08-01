@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+AR:wght@100..400&display=swap');
+
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
@@ -17,16 +18,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   &::before {
     content: "";
     position: absolute;
     display: block;
     inset: 0px;
-    background-image: url('/background_login.png'); /* Atualize o caminho conforme necessário */
+    background-image: url('/background_login.png');
     background-position: center center;
     background-size: 500px;
     opacity: 0.5;
+    z-index: 0; 
   }
 }
 
@@ -69,10 +72,11 @@ form {
 
 .icon {
   position: absolute;
-  left: 96%;
-  top: 70%;
+  left: 98%;
+  top: 65%;
   transform: translateY(-50%);
-  pointer-events: none; /* Para que o ícone não interfira na interação do usuário com o input */
+  pointer-events: none;
+  /* Para que o ícone não interfira na interação do usuário com o input */
   width: 5px;
   height: 5px;
 }
@@ -96,7 +100,8 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #005bea; /* Cor da borda quando o input está focado */
+  border-color: #005bea;
+  /* Cor da borda quando o input está focado */
 }
 
 .actionGroup {
@@ -141,22 +146,26 @@ input:focus {
   color: rgb(51, 147, 255);
 }
 
+.linkToRegister {
+  cursor: pointer;
+  text-decoration: none;
+}
 
 @media (max-width: 768px) {
-    .leftPanel {
-      display: none;
-    }
-  
-    .rightPanel {
-      align-items: center;
-    }
-  
-    form {
-      width: 100%;
-      max-width: 400px;
-    }
-  
-    h2 {
-      text-align: center;
-    }
+  .leftPanel {
+    display: none;
   }
+
+  .rightPanel {
+    align-items: center;
+  }
+
+  form {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
