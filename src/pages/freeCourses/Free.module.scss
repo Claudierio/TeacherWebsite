@@ -1,0 +1,117 @@
+.topLevel {
+    background-color: var(--background);
+    padding: 2rem 1rem;
+    color: white;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.title {
+    margin-bottom: 2rem;
+}
+
+.lists {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 300px; 
+    margin: 1rem;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    width: 300px; 
+    height: 150px; 
+    object-fit: cover; 
+    margin-bottom: 1rem;
+}
+
+.learnButton {
+    background: linear-gradient(to right, #012E40, #3CA6A6);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.learnButton:hover {
+    background: linear-gradient(to right, #3CA6A6, #012E40);
+}
+
+.buttonContainer {
+    margin-top: 2rem;
+}
+
+/* New styles for the FAQ section */
+.questions {
+    background-color: var(--background);
+    padding: 2rem 1rem;
+    text-align: center;
+    color: white;
+}
+
+.questionsImage {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.questions h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.questionList {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.questionItem {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 1rem 0;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.questionItem h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    display: inline-block;
+}
+
+.questionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.questionItem p {
+    margin: 0.5rem 0 0;
+}
+
+.questionItem:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

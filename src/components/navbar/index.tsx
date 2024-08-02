@@ -42,7 +42,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            to="/reforco-escolar"
+            to="/aulas-gratuitas"
             className={`${styles.navLink} ${
               location.pathname === "/aulas-gratuitas" ? styles.active : ""
             }`}
