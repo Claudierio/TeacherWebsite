@@ -29,7 +29,7 @@ body {
     background-position: center center;
     background-size: 500px;
     opacity: 0.5;
-    z-index: 0; 
+    z-index: 0;
   }
 }
 
@@ -112,7 +112,8 @@ input:focus {
   width: 106%;
 }
 
-.loginButton {
+.loginButton,
+.recoverButton {
   padding: 10px 20px;
   background-color: #005bea;
   color: #fff;
@@ -131,7 +132,6 @@ input:focus {
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
-
 }
 
 .registerLink {

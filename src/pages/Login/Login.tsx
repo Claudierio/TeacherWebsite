@@ -43,9 +43,9 @@ const Login = () => {
             <button type="submit" className={styles.loginButton}>
               Entrar
             </button>
-            <a href="#" className={styles.forgotPassword}>
+            <Link to='/recover' className={styles.forgotPassword}>
               Esqueci minha senha
-            </a>
+            </Link>
           </div>
         </form>
         <div className={styles.registerLink}>
