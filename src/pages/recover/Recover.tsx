@@ -1,4 +1,4 @@
-import styles from "../login/Login.module.scss";
+import styles from "../Login/Login.module.scss";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import { Link } from "react-router-dom";
 

@@ -9,17 +9,24 @@
 .content {
     max-width: 1200px;
     margin: 0 auto;
-    height: 100vh;
+    min-height: 80vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
 }
 
-.title {
-    margin-bottom: 2rem;
+.title{
+    font-size: 26px;
+    text-transform: uppercase;
+    margin-top: 3.1rem;
+    margin-bottom: 3rem; 
 }
 
 .lists {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 2rem; 
 }
 
 .card {
@@ -44,14 +51,15 @@
 }
 
 .learnButton {
-    background: linear-gradient(to right, #012E40, #3CA6A6);
-    border: none;
-    border-radius: 25px;
     color: white;
-    padding: 1rem 2rem;
     font-size: 1rem;
-    cursor: pointer;
+    font-weight: 800;
+    background: linear-gradient(to right, #012E40, #3CA6A6);
+    padding: 1rem 2rem;
     transition: background 0.3s;
+    border-radius: 38px;
+    border: none;
+    cursor: pointer;
 }
 
 .learnButton:hover {
@@ -115,3 +123,4 @@
 .questionItem:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+

@@ -1,7 +1,7 @@
 // src/components/navbar/index.tsx
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./navbar.module.scss";
+import styles from "./Navbar.module.scss";
 import PersonIcon from "@mui/icons-material/Person";
 
 export default function Navbar() {
