@@ -4,18 +4,35 @@ import * as ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
+  Outlet,
 } from "react-router-dom";
 import Home from "./App";
 import Login from "./pages/Login/Login";
 import Register from "./pages/register/Register";
 import Recover from "./pages/recover/Recover";
 import Free from "./pages/freeCourses/Free";
+import MainLayout from "./mainLayout";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
+    ),
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/aulas-gratuitas",
+        element: <Free />,
+      },
+      // Adicione outras rotas que necessitam da Navbar e Footer aqui
+    ],
   },
   {
     path: "/login",
@@ -29,10 +46,6 @@ const router = createBrowserRouter([
     path: "/recover", 
     element: <Recover />,
   },
-  {
-    path: "/aulas-gratuitas",
-    element: <Free />,
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

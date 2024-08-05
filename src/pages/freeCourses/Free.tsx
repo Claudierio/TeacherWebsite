@@ -1,4 +1,3 @@
-import Navbar from "../../components/navbar";
 import styles from "./Free.module.scss";
 import { useState } from "react";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -13,7 +12,6 @@ export default function Free() {
 
   return (
     <div>
-      <Navbar />
       <div className={styles.topLevel}>
         <div className={styles.content}>
           <div className={styles.title}>
