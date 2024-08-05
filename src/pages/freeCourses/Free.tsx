@@ -51,77 +51,92 @@ export default function Free() {
             </button>
           </div>
         </div>
-
-        <div className={styles.questions}>
-          <img
-            src="/path/to/your/image.png"
-            alt="Dúvidas"
-            className={styles.questionsImage}
-          />
-          <div className={styles.title2}>
-            <h1>Aqui estão todas as respostas de que você precisa!</h1>
+      </div>
+      <div className={styles.questions}>
+        <img
+          src="/duvidas.png"
+          alt="Dúvidas"
+          className={styles.questionsImage}
+        />
+        <div className={styles.title2}>
+          <h1>Aqui estão todas as respostas de que você precisa!</h1>
+        </div>
+        <div className={styles.questionList}>
+          <div
+            className={styles.questionItem}
+            onClick={() => toggleQuestion(0)}
+          >
+            <div className={styles.questionHeader}>
+              <h2>Os cursos são de graça mesmo?</h2>
+              {openQuestion === 0 ? (
+                <KeyboardArrowUpIcon />
+              ) : (
+                <KeyboardArrowDownIcon />
+              )}
+            </div>
+            {openQuestion === 0 && (
+              <p>
+                Sim! Os cursos de Matemática, de Física e de Química são
+                totalmente gratuitos, e você não precisará nunca pagar por eles.
+              </p>
+            )}
           </div>
-          <div className={styles.questionList}>
-            <div
-              className={styles.questionItem}
-              onClick={() => toggleQuestion(0)}
-            >
-              <div className={styles.questionHeader}>
-                <h2>Os cursos são de graça mesmo?</h2>
-                {openQuestion === 0 ? (
-                  <KeyboardArrowUpIcon />
-                ) : (
-                  <KeyboardArrowDownIcon />
-                )}
-              </div>
-              {openQuestion === 0 && (
-                <p>
-                  Sim! Os cursos de Matemática, de Física e de Química são
-                  totalmente gratuitos, e você não precisará nunca pagar por
-                  eles.
-                </p>
+          <div
+            className={styles.questionItem}
+            onClick={() => toggleQuestion(1)}
+          >
+            <div className={styles.questionHeader}>
+              <h2>
+                Por que eu preciso colocar meu email e telefone no cadastro?
+              </h2>
+              {openQuestion === 1 ? (
+                <KeyboardArrowUpIcon />
+              ) : (
+                <KeyboardArrowDownIcon />
               )}
             </div>
-            <div
-              className={styles.questionItem}
-              onClick={() => toggleQuestion(1)}
-            >
-              <div className={styles.questionHeader}>
-                <h2>
-                  Por que eu preciso colocar meu email e telefone no cadastro?
-                </h2>
-                {openQuestion === 1 ? (
-                  <KeyboardArrowUpIcon />
-                ) : (
-                  <KeyboardArrowDownIcon />
-                )}
-              </div>
-              {openQuestion === 1 && (
-                <p>
-                  Precisamos dessas informações para garantir a sua matrícula e
-                  manter você informado sobre as atualizações dos cursos.
-                </p>
+            {openQuestion === 1 && (
+              <p>
+                Precisamos dessas informações para garantir a sua matrícula e
+                manter você informado sobre as atualizações dos cursos.
+              </p>
+            )}
+          </div>
+          <div
+            className={styles.questionItem}
+            onClick={() => toggleQuestion(2)}
+          >
+            <div className={styles.questionHeader}>
+              <h2>Vai haver mais cursos gratuitos no futuro?</h2>
+              {openQuestion === 2 ? (
+                <KeyboardArrowUpIcon />
+              ) : (
+                <KeyboardArrowDownIcon />
               )}
             </div>
-            <div
-              className={styles.questionItem}
-              onClick={() => toggleQuestion(2)}
-            >
-              <div className={styles.questionHeader}>
-                <h2>Vai haver mais cursos gratuitos no futuro?</h2>
-                {openQuestion === 2 ? (
-                  <KeyboardArrowUpIcon />
-                ) : (
-                  <KeyboardArrowDownIcon />
-                )}
-              </div>
-              {openQuestion === 2 && (
-                <p>
-                  Sim, estamos sempre trabalhando para oferecer mais cursos
-                  gratuitos em diversas áreas.
-                </p>
-              )}
-            </div>
+            {openQuestion === 2 && (
+              <p>
+                Sim, estamos sempre trabalhando para oferecer mais cursos
+                gratuitos em diversas áreas.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.lastCall}>
+        <div className={styles.lastCallTextAndButtonContainer}>
+          <div className={styles.lastCallText}>
+            <h2>
+              Aprenda Matemática, Química e Física Básica
+              <span> de graça</span>, estudando pela plataforma do Professor
+              Ferretto.
+            </h2>
+          </div>
+          <div className={styles.lastCallButton}>
+            <button className={styles.openModal}>
+              QUERO ESTUDAR GRATUITAMENTE!
+            </button>
           </div>
         </div>
       </div>

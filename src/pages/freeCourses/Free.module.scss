@@ -70,17 +70,17 @@
     margin-top: 2rem;
 }
 
-/* New styles for the FAQ section */
+/*Styles FAQ section */
 .questions {
-    background-color: var(--background);
+    background-color: #00115e;
     padding: 2rem 1rem;
     text-align: center;
     color: white;
 }
 
 .questionsImage {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin-bottom: 1rem;
 }
 
@@ -124,3 +124,64 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* Estilos para a seção lastCall */
+.lastCall {
+    background: transparent linear-gradient(243deg, #1900ff 0%, #00cf5d 150%) 0% 0% no-repeat padding-box;
+    height: 325px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lastCallTextAndButtonContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.lastCallText h2 {
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 800;
+    text-align: justify center;
+    padding: 0px 28px;
+}
+
+.lastCallText h2 span {
+    color: #ffed38; 
+}
+
+.lastCallButton button {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    padding: 18px 30px;
+    margin: auto auto 20px;
+    background: transparent 0% 0% no-repeat padding-box;
+    border-radius: 38px;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1300px) {
+    .lastCallTextAndButtonContainer {
+        width: 1550px;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 100%;
+        padding: 0px;
+    }
+}
+
+@media screen and (min-width: 760px) {
+    .lastCallText h2 {
+        font-size: 32px;
+        line-height: 45px;
+    }
+}
