@@ -98,6 +98,20 @@ input {
   font-size: 16px;
 }
 
+.inputGroup {
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  &.inputError input:focus {
+    outline: none;
+    border-color: red;
+  }
+
+  &.inputError input {
+    border-color: red;
+  }
+}
+
 input:focus {
   outline: none;
   border-color: #005bea;

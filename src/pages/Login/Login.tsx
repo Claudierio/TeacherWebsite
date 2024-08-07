@@ -1,10 +1,45 @@
+import { useState } from "react";
 import styles from "./Login.module.scss";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [inputError, setInputError] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:5000/students/login", { email, password });
+      if (response.status === 200) {
+        setError("");
+        setInputError(false);
+        navigate('/');
+      }
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        if (error.response && error.response.status === 400) {
+          setError("Senha inválida");
+        } else if (error.response && error.response.status === 404) {
+          setError("Usuário não encontrado");
+        } else {
+          setError("Erro ao fazer login. Tente novamente.");
+        }
+        setInputError(true);
+      } else {
+        setError("Erro inesperado. Tente novamente.");
+        setInputError(true);
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.leftPanel}>
@@ -16,10 +51,17 @@ const Login = () => {
       </div>
       <div className={styles.rightPanel}>
         <h2>Faça seu login</h2>
-        <form>
-          <div className={styles.inputGroup}>
+        <form onSubmit={handleSubmit}>
+          <div className={`${styles.inputGroup} ${inputError ? styles.inputError : ''}`}>
             <label htmlFor="email">E-mail</label>
-            <input type="email" id="email" placeholder="E-mail" required />
+            <input
+              type="email"
+              id="email"
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
             <AlternateEmailOutlinedIcon
               className={styles.icon}
               sx={{
@@ -28,9 +70,16 @@ const Login = () => {
               }}
             />
           </div>
-          <div className={styles.inputGroup}>
+          <div className={`${styles.inputGroup} ${inputError ? styles.inputError : ''}`}>
             <label htmlFor="password">Senha</label>
-            <input type="password" id="password" placeholder="Senha" required />
+            <input
+              type="password"
+              id="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
             <LockOutlinedIcon
               className={styles.icon}
               sx={{
@@ -39,6 +88,7 @@ const Login = () => {
               }}
             />
           </div>
+          {error && <div className={styles.errorMessage}>{error}</div>}
           <div className={styles.actionGroup}>
             <button type="submit" className={styles.loginButton}>
               Entrar
