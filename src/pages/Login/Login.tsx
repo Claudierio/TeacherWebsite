@@ -1,3 +1,4 @@
+// src/pages/Login/Login.tsx
 import { useState } from "react";
 import styles from "./Login.module.scss";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
@@ -5,6 +6,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,15 +14,21 @@ const Login = () => {
   const [error, setError] = useState("");
   const [inputError, setInputError] = useState(false);
   const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       const response = await axios.post("http://localhost:5000/students/login", { email, password });
+      console.log("Login response:", response);
       if (response.status === 200) {
         setError("");
         setInputError(false);
+        const { name, token } = response.data;
+        setUser({ name });
+        localStorage.setItem("user", JSON.stringify({ name, token }));
+        console.log("User set:", { name });
         navigate('/');
       }
     } catch (error: any) {
