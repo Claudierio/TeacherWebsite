@@ -75,8 +75,6 @@ form {
   left: 98%;
   top: 65%;
   transform: translateY(-50%);
-  pointer-events: none;
-  /* Para que o ícone não interfira na interação do usuário com o input */
   width: 5px;
   height: 5px;
 }
