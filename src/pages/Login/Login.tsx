@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./Login.module.scss";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined"; // Importa o ícone de cadeado aberto
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined"; 
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [inputError, setInputError] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // Estado para controlar a visibilidade da senha
+  const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
   const { setUser } = useUser();
 
@@ -22,14 +22,12 @@ const Login = () => {
 
     try {
       const response = await axios.post("http://localhost:5000/students/login", { email, password });
-      console.log("Login response:", response);
       if (response.status === 200) {
         setError("");
         setInputError(false);
         const { name, token } = response.data;
         setUser({ name });
-        localStorage.setItem("user", JSON.stringify({ name, token }));
-        console.log("User set:", { name });
+        sessionStorage.setItem("user", JSON.stringify({ name, token }));
         navigate('/');
       }
     } catch (error: any) {
@@ -50,7 +48,7 @@ const Login = () => {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev); // Alterna entre mostrar ou esconder a senha
+    setShowPassword((prev) => !prev); 
   };
 
   return (
@@ -86,7 +84,7 @@ const Login = () => {
           <div className={`${styles.inputGroup} ${inputError ? styles.inputError : ''}`}>
             <label htmlFor="password">Senha</label>
             <input
-              type={showPassword ? "text" : "password"} // Altera o tipo do input com base no estado
+              type={showPassword ? "text" : "password"} 
               id="password"
               placeholder="Senha"
               value={password}
@@ -96,7 +94,7 @@ const Login = () => {
             {showPassword ? (
               <LockOpenOutlinedIcon
                 className={styles.icon}
-                onClick={togglePasswordVisibility} // Alterna o ícone quando clicado
+                onClick={togglePasswordVisibility} 
                 sx={{
                   width: 18,
                   height: 18,
@@ -106,7 +104,7 @@ const Login = () => {
             ) : (
               <LockOutlinedIcon
                 className={styles.icon}
-                onClick={togglePasswordVisibility} // Alterna o ícone quando clicado
+                onClick={togglePasswordVisibility} 
                 sx={{
                   width: 18,
                   height: 18,

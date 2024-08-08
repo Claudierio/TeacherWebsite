@@ -1,46 +1,61 @@
 import styles from "./Register.module.scss";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
-import { Link } from "react-router-dom";
-import axios from 'axios';
-import { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { useUser } from "../../context/UserContext";
 
 export default function Register() {
-  const [name, setName] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [email, setEmail] = useState('');
-  const [confirmEmail, setConfirmEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email !== confirmEmail) {
-      setError('Os e-mails não correspondem.');
+      setError("Os e-mails não correspondem.");
       return;
     }
     if (password !== confirmPassword) {
-      setError('As senhas não correspondem.');
+      setError("As senhas não correspondem.");
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/students', {
+      const response = await axios.post("http://localhost:5000/students", {
         name,
         lastname,
         email,
         confirmEmail,
         phone,
         password,
-        confirmPassword
+        confirmPassword,
       });
-      console.log(response.data);
-      // Handle successful registration
+      if (response.status === 201) {
+        // Sucesso na criação
+        console.log(response.data);
+        const { name, token } = response.data;
+        setUser({ name });
+        sessionStorage.setItem("user", JSON.stringify({ name, token }));
+        navigate("/"); // Redirecionar para a homepage logado
+      }
     } catch (err) {
-      setError('Registro falhou. Por favor, tente novamente.');
+      setError("Registro falhou. Por favor, tente novamente.");
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -138,38 +153,66 @@ export default function Register() {
           <div className={styles.inputGroup}>
             <label htmlFor="password">Senha</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} 
               id="password"
               placeholder="Senha"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <LockOutlinedIcon
-              className={styles.icon}
-              style={{
-                width: 18,
-                height: 18,
-              }}
-            />
+            {showPassword ? (
+              <LockOpenOutlinedIcon
+                className={styles.icon}
+                onClick={togglePasswordVisibility}
+                sx={{
+                  width: 18,
+                  height: 18,
+                  cursor: "pointer",
+                }}
+              />
+            ) : (
+              <LockOutlinedIcon
+                className={styles.icon}
+                onClick={togglePasswordVisibility}
+                sx={{
+                  width: 18,
+                  height: 18,
+                  cursor: "pointer",
+                }}
+              />
+            )}
           </div>
           <div className={styles.inputGroup}>
             <label htmlFor="confirmPassword">Confirmar senha</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} 
               id="confirmPassword"
               placeholder="Confirmar senha"
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <LockOutlinedIcon
-              className={styles.icon}
-              style={{
-                width: 18,
-                height: 18,
-              }}
-            />
+            {showPassword ? (
+              <LockOpenOutlinedIcon
+                className={styles.icon}
+                onClick={togglePasswordVisibility}
+                sx={{
+                  width: 18,
+                  height: 18,
+                  cursor: "pointer",
+                }}
+              />
+            ) : (
+              <LockOutlinedIcon
+                className={styles.icon}
+                onClick={togglePasswordVisibility}
+                sx={{
+                  width: 18,
+                  height: 18,
+                  cursor: "pointer",
+                }}
+              />
+            )}
           </div>
           {error && <p>{error}</p>}
           <div className={styles.actionGroup}>
