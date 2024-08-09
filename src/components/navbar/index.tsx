@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./navbar.module.scss";
 import PersonIcon from "@mui/icons-material/Person";
@@ -57,20 +56,23 @@ export default function Navbar() {
             <>
               <PersonIcon />
               <span>{user.name}</span>
-              <button onClick={logout} className={styles.logoutButton}>
+             {/* <button onClick={logout} className={styles.logoutButton}>
                 Logout
-              </button>
+              </button>*/}
             </>
           ) : (
-            <Link
-              to="/login"
-              className={`${styles.navLink} ${
-                location.pathname === "/login" ? styles.active : ""
-              }`}
-            >
-              <span>Já sou aluno</span>
-              <PersonIcon />
-            </Link>
+            <><Link
+                to="/register"
+                className={`${styles.navLink} ${location.pathname === "/register" ? styles.active : ""}`}
+              >
+                <span className={styles.studentButton}>Assine</span>
+              </Link><Link
+                to="/login"
+                className={`${styles.navLink} ${location.pathname === "/login" ? styles.active : ""}`}
+              >
+                  <span>Já sou aluno</span>
+                  <PersonIcon />
+                </Link></>
           )}
         </div>
       </nav>

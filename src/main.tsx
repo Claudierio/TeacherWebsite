@@ -1,4 +1,3 @@
-// src/main.tsx
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import {
@@ -12,6 +11,7 @@ import Register from "./pages/register/Register";
 import Recover from "./pages/recover/Recover";
 import Free from "./pages/freeCourses/Free";
 import MainLayout from "./mainLayout";
+import Support from "./pages/schoolSupport/Support";
 import { UserProvider } from "./context/UserContext";
 import "./index.css";
 
@@ -23,6 +23,7 @@ const router = createBrowserRouter([
         <Outlet />
       </MainLayout>
     ),
+    // Rotas que necessitam da Navbar e Footer aqui
     children: [
       {
         path: "/",
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
         path: "/aulas-gratuitas",
         element: <Free />,
       },
-      // Adicione outras rotas que necessitam da Navbar e Footer aqui
+      {
+        path: "/reforco-escolar",
+        element: <Support />,
+      }
+      
     ],
   },
   {
